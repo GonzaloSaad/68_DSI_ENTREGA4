@@ -62,5 +62,6 @@ public class GestorControlLectura {
 
     private void enviarResumen() {
     }
-
+    
+    
 }

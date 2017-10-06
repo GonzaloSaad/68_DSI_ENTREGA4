@@ -22,6 +22,16 @@ public class Creada extends Estado {
     @Override
     public void controlarLectura(Lectura lectura,boolean requiereRevision) {
         
+        Estado estadoProximo;
+        if (requiereRevision){
+            estadoProximo = new PendienteDeRevision();
+        }
+        else{
+            estadoProximo = new ControladaSinFacturar();
+        }
+        
+        lectura.setEstado(estadoProximo);
+        
     }
 
     @Override

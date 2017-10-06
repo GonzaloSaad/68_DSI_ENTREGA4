@@ -15,8 +15,17 @@ import clases_dominio.Propiedad;
 public class FacturadaSinControl extends Estado {
 
     @Override
-    public void controlarLectura(Lectura lectura, boolean requireRevision) {
+    public void controlarLectura(Lectura lectura, boolean requiereRevision) {
         
+        Estado estadoProximo;
+        if (requiereRevision){
+            estadoProximo = new PendienteDeRevision();
+        }
+        else{
+            estadoProximo = new ControladaFacturada();
+        }
+        
+        lectura.setEstado(estadoProximo);
     }
 
     @Override
