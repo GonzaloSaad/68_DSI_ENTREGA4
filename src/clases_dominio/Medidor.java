@@ -15,12 +15,11 @@ public class Medidor {
 
     private Lectura lecturas[];
     private int numero;
-    
 
     public Lectura[] getLecturas() {
         return lecturas;
     }
-    
+
     public void setLecturas(Lectura lecturas[]) {
         this.lecturas = lecturas;
     }
@@ -34,22 +33,34 @@ public class Medidor {
     }
 
     public void controlarLectura(Date fechaDesde, Date fechaHasta) {
-        Lectura lecAControlar;
-        Lectura lecAnterior;
-        Lectura lecAnteriorAnterior;
-        
-        
-        for (int i = 0;i<lecturas.length;i++){
-            if (lecturas[i].esDePeriodo(fechaDesde, fechaHasta)){
+        Lectura lecAControlar = null;
+        Lectura lecAnterior = null;
+        Lectura lecAnteriorAnterior = null;
+
+        for (int i = 0; i < lecturas.length; i++) {
+            if (lecturas[i].esDePeriodo(fechaDesde, fechaHasta)) {
                 lecAControlar = lecturas[i];
-                lecAnterior = lecturas[i-1];
-                lecAnteriorAnterior = lecturas[i-2];
+                lecAnterior = lecturas[i - 1];
+                lecAnteriorAnterior = lecturas[i - 2];
                 break;
             }
-         
+
         }
-        
-        double consumoPrevio;
-        
+
+        if (lecAControlar != null) {
+
+            int diasConsumoActual = (int) ((lecAControlar.getFechaHoraLectura().getTime() - lecAnterior.getFechaHoraLectura().getTime()) / (1000 * 60 * 60 * 24));
+            int diasConsumoAnterior = (int) ((lecAnterior.getFechaHoraLectura().getTime() - lecAnteriorAnterior.getFechaHoraLectura().getTime()) / (1000 * 60 * 60 * 24));
+
+            double consumo = ((lecAControlar.getValorLectura() - lecAnterior.getValorLectura()) / (diasConsumoActual)) * 30;
+            double consumoAnterior = ((lecAnterior.getValorLectura() - lecAnteriorAnterior.getValorLectura()) / diasConsumoAnterior) * 30;
+
+            boolean requiereRevision = (lecAControlar.getValorLectura() - lecAnterior.getValorLectura()) <= 1
+                    || Math.abs(consumo - consumoAnterior) < 50;
+
+            lecAControlar.controlarLectura(requiereRevision);
+
+        }
     }
+
 }

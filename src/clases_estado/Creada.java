@@ -20,22 +20,8 @@ public class Creada extends Estado {
     }
 
     @Override
-    public void controlarLectura(Lectura lectura,Propiedad propiedad) {
-        Estado estado; // Variable del tipo Estado (abstracta).
-        Propiedad propActual = propiedad; // Obtener la propiedad de la lectura. 
-
-        // Verificar si se registro Consumo Escaso O (||) Consumo Menor al Esperado.
-        if (propActual.verificarConsumoEscaso() || propActual.verificarConsumoMenorAEsperado()) {
-            // [requiere control = SI]
-            estado = new PendienteDeRevision();
-
-        } else {
-            // [requiere control = NO]
-            estado = new ControladaSinFacturar();
-
-        }
-
-        lectura.setEstado(estado);
+    public void controlarLectura(Lectura lectura,boolean requiereRevision) {
+        
     }
 
     @Override

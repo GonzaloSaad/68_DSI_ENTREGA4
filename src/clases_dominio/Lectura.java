@@ -29,8 +29,8 @@ public class Lectura {
         this.estado.crearFactura(this);
     }
 
-    public void controlarLectura(Propiedad prop) {
-        this.estado.controlarLectura(this, prop);
+    public void controlarLectura(boolean requiereRevision) {
+        this.estado.controlarLectura(this,requiereRevision);
     }
 
     public void corregirLectura() {

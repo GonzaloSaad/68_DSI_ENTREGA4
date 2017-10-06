@@ -19,7 +19,7 @@ public abstract class Estado {
     
     
     public void crearFactura(Lectura lectura){/**Implementacion Trivial**/}
-    public void controlarLectura(Lectura lectura,Propiedad propiedad){/**Implementacion Trivial**/}
+    public void controlarLectura(Lectura lectura,boolean requiereRevision){/**Implementacion Trivial**/}
     public void corregirLectura(Lectura lectura){/**Implementacion Trivial**/}
     public void registrarMotivoDeNoCorreccion(Lectura lectura){/**Implementacion Trivial**/}
     public void evaluarLectura(Lectura lectura){/**Implementacion Trivial**/}
