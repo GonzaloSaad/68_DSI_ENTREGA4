@@ -24,11 +24,11 @@ public class GestorControlLectura {
     public void ejecutarControlLectura() {
         this.obtenerFechaActual();
         this.buscarPeriodoFacturacionActual();
-        this.buscarLecturasAControlar();
         this.controlarLecturas();
         this.generarResumen();
         this.obtenerEmailSupervisores();
         this.enviarResumen();
+
     }
 
     private void obtenerFechaActual() {
@@ -47,16 +47,12 @@ public class GestorControlLectura {
 
     }
 
-    private void buscarLecturasAControlar() {
-        
-    }
-
     private void controlarLecturas() {
-        for (Propiedad prop: this.propiedades){
-            prop.controlarLectura();
+        for (Propiedad prop : this.propiedades) {
+            
         }
     }
-
+       
     private void generarResumen() {
     }
 

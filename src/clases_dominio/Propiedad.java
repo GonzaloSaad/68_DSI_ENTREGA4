@@ -4,23 +4,21 @@
  * and open the template in the editor.
  */
 package clases_dominio;
-
+import java.util.Date;
 /**
  *
  * @author Gonzalo
  */
 public class Propiedad {
 
-    private Instalacion instalaciones;
-    private Instalacion instLecturaAControlar;
-    private Instalacion instLecturaAnterior;
-    private Instalacion instLecturaAnteriorAnterior;
+    private Instalacion instalaciones[];
+    
 
     public void buscarLecturasAControlar() {
     }
 
-    public void controlarLectura() {
-        this.instLecturaAControlar.controlarLectura(this);
+    public void controlarLectura(Date fechaDesde, Date fechaHasta) {
+        
     }
 
     public boolean verificarConsumoEscaso() {
@@ -30,5 +28,13 @@ public class Propiedad {
     public boolean verificarConsumoMenorAEsperado() {
         return true;
     }
-
+    
+    public Instalacion buscarInstalacionEnPeriodo(Date fechaDesde, Date fechaHasta) {
+        for (Instalacion inst: instalaciones){
+            if (inst.esInstalacionEnPeriodo(fechaDesde, fechaHasta)){
+                return inst;
+            }
+        }
+        return null;
+    }
 }

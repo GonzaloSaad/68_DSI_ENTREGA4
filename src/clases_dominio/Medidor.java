@@ -13,23 +13,15 @@ import java.util.Date;
 
 public class Medidor {
 
-    private Lectura lecturas;
+    private Lectura lecturas[];
     private int numero;
     private Lectura lecturaAControlar;
 
-    public float buscarLecturaAnterior(Lectura lec) {
-        return 0;
-    }
-
-    public float buscarLecturaAControlar(Date fechaDesde, Date fechaHasta) {
-        return 0;
-    }
-
-    public void controlarLectura(Propiedad prop) {
+    public void controlarLectura(Date fechaDesde, Date fechaHasta) {
         this.lecturaAControlar.controlarLectura(prop);
     }
 
-    public Lectura getLecturas() {
+    public Lectura[] getLecturas() {
         return lecturas;
     }
 

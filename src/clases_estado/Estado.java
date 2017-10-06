@@ -17,6 +17,7 @@ public abstract class Estado {
     private String ambito;
     private String descripcion;
     
+    
     public void crearFactura(Lectura lectura){/**Implementacion Trivial**/}
     public void controlarLectura(Lectura lectura,Propiedad propiedad){/**Implementacion Trivial**/}
     public void corregirLectura(Lectura lectura){/**Implementacion Trivial**/}
@@ -25,7 +26,5 @@ public abstract class Estado {
     public boolean esCreada(){return false;}
     public boolean esFacturada() { return false;}
     
-    /*
-    Getters y Setters ...
-    */
+    
 }
