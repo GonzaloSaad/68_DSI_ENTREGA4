@@ -48,12 +48,12 @@ public class GestorControlLectura {
     }
 
     private void controlarLecturas() {
-        int[] contadorEstados; 
+        int[] contadorEstados;
         for (Propiedad prop : this.propiedades) {
             prop.controlarLectura(periodoActual.getFechaDesde(), periodoActual.getFechaHasta());
         }
     }
-       
+
     private void generarResumen() {
     }
 
