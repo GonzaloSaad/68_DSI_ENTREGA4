@@ -21,7 +21,8 @@ public class Creada extends Estado {
 
     @Override
     public void controlarLectura(Lectura lectura,boolean requiereRevision) {
-        
+        System.out.println("\n\n---------------------------------------------");
+        System.out.println(lectura);
         Estado estadoProximo;
         if (requiereRevision){
             estadoProximo = new PendienteDeRevision();
@@ -31,7 +32,7 @@ public class Creada extends Estado {
         }
         
         lectura.setEstado(estadoProximo);
-        
+        System.out.println(lectura);
     }
 
     @Override

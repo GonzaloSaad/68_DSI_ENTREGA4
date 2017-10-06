@@ -24,16 +24,15 @@ public class Medidor {
         for (int i = 0; i < lecturas.length; i++) {
             if (lecturas[i].esDePeriodo(fechaDesde, fechaHasta)) {
                 lecAControlar = lecturas[i];
-                
-                if (lecAControlar.esCreada() || lecAControlar.esFacturada()){
+
+                if (lecAControlar.esCreada() || lecAControlar.esFacturada()) {
                     lecAnterior = lecturas[i - 1];
                     lecAnteriorAnterior = lecturas[i - 2];
                     break;
-                }
-                else{
+                } else {
                     return;
                 }
-                
+
             }
 
         }
@@ -52,7 +51,7 @@ public class Medidor {
 
         }
     }
-    
+
     public Lectura[] getLecturas() {
         return lecturas;
     }
@@ -68,7 +67,5 @@ public class Medidor {
     public void setNumero(int numero) {
         this.numero = numero;
     }
-
-    
 
 }
