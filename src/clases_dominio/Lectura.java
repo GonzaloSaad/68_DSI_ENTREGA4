@@ -6,13 +6,19 @@
 package clases_dominio;
 
 import clases_estado.Estado;
-
+import java.util.Date;
 /**
  *
  * @author Gonzalo
  */
 public class Lectura {
-
+    private Date fechaHoraLectura;
+    private float valorLectura;
+    private float valorCorregido;
+    private float valorEstimado;
+    
+    
+    
     private Estado estado;
 
     public void setEstado(Estado estado) {
@@ -46,5 +52,41 @@ public class Lectura {
     public boolean esFacturada() {
         return this.estado.esFacturada();
     }
+    
+    public boolean esDePeriodo(Date fechaDesde,Date fechaHasta){
+        return (this.fechaHoraLectura.after(fechaDesde) && this.fechaHoraLectura.before(fechaHasta));
+    }
 
+    public Date getFechaHoraLectura() {
+        return fechaHoraLectura;
+    }
+
+    public void setFechaHoraLectura(Date fechaHoraLectura) {
+        this.fechaHoraLectura = fechaHoraLectura;
+    }
+
+    public float getValorLectura() {
+        return valorLectura;
+    }
+
+    public void setValorLectura(float valorLectura) {
+        this.valorLectura = valorLectura;
+    }
+
+    public float getValorCorregido() {
+        return valorCorregido;
+    }
+
+    public void setValorCorregido(float valorCorregido) {
+        this.valorCorregido = valorCorregido;
+    }
+
+    public float getValorEstimado() {
+        return valorEstimado;
+    }
+
+    public void setValorEstimado(float valorEstimado) {
+        this.valorEstimado = valorEstimado;
+    }
+            
 }

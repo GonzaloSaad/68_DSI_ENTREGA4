@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package cu68_dsi_entrega4;
-
+import clases_analisis.GestorControlLectura;
 /**
  *
  * @author Gonzalo
@@ -17,7 +17,7 @@ public class CU68_DSI_ENTREGA4 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        
+        GestorControlLectura gestor = new GestorControlLectura();
                 
         
     }

@@ -14,7 +14,7 @@ public class Instalacion {
     private Medidor medidor;
 
     public void controlarLectura(Date fechaDesde, Date fechaHasta) {
-        this.medidor.controlarLectura(Date fechaDesde, Date fechaHasta);
+        this.medidor.controlarLectura(fechaDesde,fechaHasta);
     }
     
     public boolean esInstalacionEnPeriodo(Date fechaDesde, Date fechaHasta){
