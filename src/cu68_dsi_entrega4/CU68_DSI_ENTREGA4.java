@@ -6,7 +6,8 @@
 package cu68_dsi_entrega4;
 
 import clases_analisis.GestorControlLectura;
-import clases_dominio.Lectura;
+import clases_dominio.Instalacion;
+import clases_estado.*;
 import java.util.Date;
 import java.util.Calendar;
 import randomCreator.RandomCreator;
@@ -28,10 +29,14 @@ public class CU68_DSI_ENTREGA4 {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MONTH, -30);
         
-       
+             
         
         RandomCreator rc = new RandomCreator();
+        Instalacion instalaciones[]=rc.createInstalaciones(cal.getTime(), 2);
         
+        for (Instalacion ins: instalaciones){
+            System.out.println(ins);
+        }
     }
 
 }

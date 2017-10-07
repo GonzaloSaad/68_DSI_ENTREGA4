@@ -17,69 +17,65 @@ import java.util.Calendar;
  */
 public class RandomCreator {
 
-    private Instalacion[] createInstalaciones(Date dateFrom, int cant, double initialRead) {
+    public Instalacion[] createInstalaciones(Date dateFrom, int cant) {
         Instalacion insts[] = new Instalacion[cant];
         int months = monthDiffToDate(dateFrom);
         int lecPInst[] = distributeSumInCant(months, cant);
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateFrom);
 
-        double acRead = initialRead;
+        double acRead = randomInt(1, 10, 1) * 500;
         int lecs;
         for (int i = 0; i < cant; i++) {
 
-            lecs = lecPInst[i]-1;
-            
+            lecs = lecPInst[i] - 1;
+
             Lectura iLec = new Lectura();
             iLec.setEstado(new Creada());
             iLec.setFechaHoraLectura(cal.getTime());
             iLec.setValorLectura(acRead);
-            
+
             Instalacion inst = new Instalacion();
             inst.setFechaInstalacion(cal.getTime());
             inst.setLecturaInicial(iLec);
-            
-            cal.add(Calendar.DATE, randomInt(15,30,1));
+
+            cal.add(Calendar.DATE, randomInt(15, 30, 1));
             acRead += 25 * randomInt(0, 20, 1);
-            
+
             Medidor med = new Medidor();
-            med.setNumero(randomInt(0,1000,1));
-            med.setLecturas(createLecturas(cal,lecs,randomInt(1,10,1)*500));
-            acRead += 25 * randomInt(0, 20, 1);
-            
+            med.setNumero(randomInt(0, 1000, 1));
+            med.setLecturas(createLecturas(cal, lecs, acRead, i == cant - 1));
+
             inst.setMedidor(med);
             cal.setTime(med.getUltimaLectura().getFechaHoraLectura());
-            cal.add(Calendar.DATE, randomInt(1,10,1));
-            
-            if (i==cant-1){
+            cal.add(Calendar.DATE, randomInt(1, 10, 1));
+
+            if (i < cant - 1) {
                 inst.setFechaRetiro(dateFrom);
             }
-            insts[i]=inst;
-            
-            
-            
+            insts[i] = inst;
+
         }
 
         return insts;
     }
 
-    public Lectura[] createLecturas(Calendar cal, int cant, double initialRead) {
+    private Lectura[] createLecturas(Calendar cal, int cant, double initialRead, boolean last) {
         Lectura lec[] = new Lectura[cant];
         double reads[] = randomDoubleVector(initialRead, cant);
-        
 
         for (int i = 0; i < cant; i++) {
             Lectura nLec = new Lectura();
             nLec.setFechaHoraLectura(cal.getTime());
             nLec.setValorLectura(reads[i]);
-            if (i < cant - 1) {
+            if (i < cant - 1 || !last) {
                 nLec.setEstado(new ControladaFacturada());
             } else {
                 nLec.setEstado(randomState());
             }
 
             lec[i] = nLec;
-            cal.add(Calendar.DATE, randomInt(30,40,1));
+            cal.add(Calendar.DATE, randomInt(30, 40, 1));
         }
 
         return lec;
@@ -118,7 +114,7 @@ public class RandomCreator {
 
         for (int i = 0; i < cant; i++) {
             vec[i] = value;
-            value += 25 * randomInt(0, 20, 1);
+            value += randomInt(15, 20, 1) * randomInt(0, 20, 1);
         }
         return vec;
     }

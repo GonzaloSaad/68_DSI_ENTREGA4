@@ -10,5 +10,7 @@ package clases_estado;
  * @author Gonzalo
  */
 public class ControladaFacturada extends Estado {
+
+    
     
 }

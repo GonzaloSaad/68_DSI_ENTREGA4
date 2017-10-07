@@ -66,10 +66,10 @@ public class Instalacion {
     public String toString() {
         
         return ("\nInstalacion{"
-                + "fechaInstalacion=" + fechaInstalacion
-                + ", fechaRetiro=" + fechaRetiro
-                + ", lecturaInicial=" + lecturaInicial
-                + ", medidor=" + medidor + '}');
+                + "\nfechaInstalacion=" + fechaInstalacion
+                + "\nfechaRetiro=" + fechaRetiro
+                + "\nlecturaInicial=" + lecturaInicial
+                + "\nmedidor=" + medidor + '}');
         
     }
 

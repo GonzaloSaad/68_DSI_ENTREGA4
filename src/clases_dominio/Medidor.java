@@ -74,10 +74,10 @@ public class Medidor {
 
     @Override
     public String toString() {
-        String aux = "Medidor{" + "numero=" + numero + '}';
+        String aux = "\tMedidor{" + "numero=" + numero + '}';
         StringBuilder str = new StringBuilder(aux);
         for (Lectura lec : lecturas){
-            str.append("\n");
+            str.append("\n\t\t");
             str.append(lec);
                     
         }
