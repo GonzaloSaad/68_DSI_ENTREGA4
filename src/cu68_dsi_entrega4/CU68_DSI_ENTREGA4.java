@@ -20,7 +20,7 @@ public class CU68_DSI_ENTREGA4 {
         // TODO code application logic here
         
         GestorControlLectura gestor = new GestorControlLectura();
-             
+        
         
     }
     

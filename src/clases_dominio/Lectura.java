@@ -13,9 +13,9 @@ import java.util.Date;
  */
 public class Lectura {
     private Date fechaHoraLectura;
-    private float valorLectura;
-    private float valorCorregido;
-    private float valorEstimado;
+    private double valorLectura;
+    private double valorCorregido;
+    private double valorEstimado;
     
     
     
@@ -65,28 +65,36 @@ public class Lectura {
         this.fechaHoraLectura = fechaHoraLectura;
     }
 
-    public float getValorLectura() {
+    public double getValorLectura() {
         return valorLectura;
     }
 
-    public void setValorLectura(float valorLectura) {
+    public void setValorLectura(double valorLectura) {
         this.valorLectura = valorLectura;
     }
 
-    public float getValorCorregido() {
+    public double getValorCorregido() {
         return valorCorregido;
     }
 
-    public void setValorCorregido(float valorCorregido) {
+    public void setValorCorregido(double valorCorregido) {
         this.valorCorregido = valorCorregido;
     }
 
-    public float getValorEstimado() {
+    public double getValorEstimado() {
         return valorEstimado;
     }
 
-    public void setValorEstimado(float valorEstimado) {
+    public void setValorEstimado(double valorEstimado) {
         this.valorEstimado = valorEstimado;
+    }
+
+    
+
+    
+    @Override
+    public String toString() {
+        return "Lectura{" + "fechaHoraLectura=" + fechaHoraLectura + ", valorLectura=" + valorLectura + ", estado=" + estado + '}';
     }
             
 }
