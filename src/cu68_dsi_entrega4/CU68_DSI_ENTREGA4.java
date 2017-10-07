@@ -26,17 +26,12 @@ public class CU68_DSI_ENTREGA4 {
 
         GestorControlLectura gestor = new GestorControlLectura();
         Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.MONTH, -5);
+        cal.add(Calendar.MONTH, -30);
         
-        Calendar cal2 = Calendar.getInstance();
+       
         
         RandomCreator rc = new RandomCreator();
         
-        int cant = 4;
-        int[] v = rc.distributeSumInCant(50, cant);
-        for(int c: v){
-            System.out.println(c);
-        }
     }
 
 }

@@ -25,6 +25,12 @@ public abstract class Estado {
     public void evaluarLectura(Lectura lectura){/**Implementacion Trivial**/}
     public boolean esCreada(){return false;}
     public boolean esFacturada() { return false;}
+
+    @Override
+    public String toString() {
+        return "Estado{" + "nombre=" + nombre + '}';
+    }
+    
     
     
 }

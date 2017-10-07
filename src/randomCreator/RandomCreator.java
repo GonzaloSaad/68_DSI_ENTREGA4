@@ -18,17 +18,55 @@ import java.util.Calendar;
 public class RandomCreator {
 
     private Instalacion[] createInstalaciones(Date dateFrom, int cant, double initialRead) {
-        Instalacion inst[] = new Instalacion[cant];
+        Instalacion insts[] = new Instalacion[cant];
         int months = monthDiffToDate(dateFrom);
-
-        return null;
-    }
-
-    public Lectura[] createLecturas(Date dateFrom, int cant, double initialRead) {
-        Lectura lec[] = new Lectura[cant];
-        double reads[] = randomDoubleVector(initialRead, cant);
+        int lecPInst[] = distributeSumInCant(months, cant);
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateFrom);
+
+        double acRead = initialRead;
+        int lecs;
+        for (int i = 0; i < cant; i++) {
+
+            lecs = lecPInst[i]-1;
+            
+            Lectura iLec = new Lectura();
+            iLec.setEstado(new Creada());
+            iLec.setFechaHoraLectura(cal.getTime());
+            iLec.setValorLectura(acRead);
+            
+            Instalacion inst = new Instalacion();
+            inst.setFechaInstalacion(cal.getTime());
+            inst.setLecturaInicial(iLec);
+            
+            cal.add(Calendar.DATE, randomInt(15,30,1));
+            acRead += 25 * randomInt(0, 20, 1);
+            
+            Medidor med = new Medidor();
+            med.setNumero(randomInt(0,1000,1));
+            med.setLecturas(createLecturas(cal,lecs,randomInt(1,10,1)*500));
+            acRead += 25 * randomInt(0, 20, 1);
+            
+            inst.setMedidor(med);
+            cal.setTime(med.getUltimaLectura().getFechaHoraLectura());
+            cal.add(Calendar.DATE, randomInt(1,10,1));
+            
+            if (i==cant-1){
+                inst.setFechaRetiro(dateFrom);
+            }
+            insts[i]=inst;
+            
+            
+            
+        }
+
+        return insts;
+    }
+
+    public Lectura[] createLecturas(Calendar cal, int cant, double initialRead) {
+        Lectura lec[] = new Lectura[cant];
+        double reads[] = randomDoubleVector(initialRead, cant);
+        
 
         for (int i = 0; i < cant; i++) {
             Lectura nLec = new Lectura();
@@ -41,7 +79,7 @@ public class RandomCreator {
             }
 
             lec[i] = nLec;
-            cal.add(Calendar.DATE, 1);
+            cal.add(Calendar.DATE, randomInt(30,40,1));
         }
 
         return lec;
@@ -50,7 +88,7 @@ public class RandomCreator {
 
     private int randomInt(int minimum, int maximum, int multiplier) {
         Random random = new Random();
-        return minimum + random.nextInt(maximum-minimum) * multiplier;
+        return minimum + random.nextInt(maximum - minimum) * multiplier;
     }
 
     private Estado randomState() {
@@ -102,20 +140,19 @@ public class RandomCreator {
 
     public int[] distributeSumInCant(int sum, int cant) {
         int[] vec = new int[cant];
-        
+
         int tot = sum;
         int num;
-        int lim = (int) sum/(cant-1);
+        int lim = (int) sum / (cant - 1);
         for (int i = 0; i < cant; i++) {
-            
-            if (i < cant - 1) {                
-                num = randomInt(4,lim,1);   
+
+            if (i < cant - 1) {
+                num = randomInt(4, lim, 1);
                 tot -= num;
-            }
-            else{
+            } else {
                 num = sum - tot;
             }
-            vec[i]=num;
+            vec[i] = num;
         }
         return vec;
     }

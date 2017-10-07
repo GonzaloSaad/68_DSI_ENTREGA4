@@ -68,4 +68,20 @@ public class Medidor {
         this.numero = numero;
     }
 
+    public Lectura getUltimaLectura() {
+        return lecturas[lecturas.length - 1];
+    }
+
+    @Override
+    public String toString() {
+        String aux = "Medidor{" + "numero=" + numero + '}';
+        StringBuilder str = new StringBuilder(aux);
+        for (Lectura lec : lecturas){
+            str.append("\n");
+            str.append(lec);
+                    
+        }
+        return str.toString();
+    }
+
 }
