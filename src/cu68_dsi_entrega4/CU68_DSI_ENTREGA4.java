@@ -5,8 +5,10 @@
  */
 package cu68_dsi_entrega4;
 import clases_analisis.GestorControlLectura;
+import clases_dominio.Lectura;
 import java.util.Date;
 import java.util.Calendar;
+import randomCreator.RandomCreator;
 /**
  *
  * @author Gonzalo
@@ -20,6 +22,7 @@ public class CU68_DSI_ENTREGA4 {
         // TODO code application logic here
         
         GestorControlLectura gestor = new GestorControlLectura();
+        RandomCreator rc = new RandomCreator();
         
         
     }

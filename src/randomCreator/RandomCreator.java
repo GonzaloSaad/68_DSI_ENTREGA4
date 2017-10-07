@@ -17,7 +17,7 @@ import java.util.Calendar;
  */
 public class RandomCreator {
 
-    private Lectura[] createLecturas(Date dateFrom, int cant,double initialRead) {
+    public Lectura[] createLecturas(Date dateFrom, int cant,double initialRead) {
         Lectura lec[] = new Lectura[cant];
         double reads[] = randomDoubleVector(initialRead,cant);
         Calendar cal = Calendar.getInstance();
@@ -35,10 +35,11 @@ public class RandomCreator {
             }
             
             lec[i]=nLec;
+            cal.add(Calendar.MONTH, 1);
         }
             
         
-        return null;
+        return lec;
 
     }
 
@@ -76,6 +77,6 @@ public class RandomCreator {
             vec[i]=value;
             value += 25*randomInt(0,20,1);
         }
-        
+        return vec;
     }
 }
