@@ -104,13 +104,13 @@ public class RandomCreator {
         int[] vec = new int[cant];
         
         int tot = sum;
-        int top;
         int num;
+        int lim = (int) sum/(cant-1);
         for (int i = 0; i < cant; i++) {
-            if (i < cant - 1) {
-                top = (int)(tot * randomInt(0,5,1)/10);
-                num = randomInt(3,top,1);   
-                tot = tot - num;
+            
+            if (i < cant - 1) {                
+                num = randomInt(4,lim,1);   
+                tot -= num;
             }
             else{
                 num = sum - tot;
