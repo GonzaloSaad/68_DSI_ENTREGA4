@@ -25,7 +25,7 @@ import java.text.SimpleDateFormat;
 public class InterfazServidorMail {
 
     public void enviarCorreo(String to, String mes, Date fecha) {
-        String fechaString = new SimpleDateFormat("yyyy-MM-dd").format(fecha);
+        String fechaString = new SimpleDateFormat("dd-MM-yyyy").format(fecha);
         sendEmail("controllecturasmasivo@gmail.com",
                 "grupo4dsi",
                 to,

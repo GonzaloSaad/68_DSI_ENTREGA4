@@ -72,10 +72,10 @@ public class GestorControlLectura {
         StringBuilder str = new StringBuilder();
 
         str.append("Control de Lecturas de ").append(fechaActual)
-                .append("\nCantidad de lecturas: \t").append(totLecturasControladas)
-                .append("\nPendientes de revision: \t").append(lecturasPorEstado[0])
-                .append("\nControladas sin Facturar: \t").append(lecturasPorEstado[1])
-                .append("\nControladas Facturadas: \t").append(lecturasPorEstado[2]);
+                .append("\nCantidad de lecturas:\t\t").append(totLecturasControladas)
+                .append("\nPendientes de revision:\t").append(lecturasPorEstado[0])
+                .append("\nControladas sin Facturar:\t").append(lecturasPorEstado[1])
+                .append("\nControladas Facturadas:\t").append(lecturasPorEstado[2]);
 
         resumen = str.toString();
 
