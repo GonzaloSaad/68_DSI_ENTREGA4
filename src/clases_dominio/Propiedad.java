@@ -35,12 +35,12 @@ public class Propiedad {
     public void buscarLecturasAControlar() {
     }
 
-    public void controlarLectura(Date fechaDesde, Date fechaHasta) {
+    public int controlarLectura(Date fechaDesde, Date fechaHasta) {
         Instalacion instal = this.buscarInstalacionEnPeriodo(fechaDesde, fechaHasta);
         if (instal == null) {
-            return;
+            return -1;
         }
-        instal.controlarLectura(fechaDesde, fechaHasta);
+        return instal.controlarLectura(fechaDesde, fechaHasta);
     }
 
     public boolean verificarConsumoEscaso() {

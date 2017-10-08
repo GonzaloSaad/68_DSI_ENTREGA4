@@ -16,7 +16,7 @@ public class Medidor {
     private Lectura lecturas[];
     private int numero;
 
-    public void controlarLectura(Date fechaDesde, Date fechaHasta) {
+    public int controlarLectura(Date fechaDesde, Date fechaHasta) {
         Lectura lecAControlar = null;
         Lectura lecAnterior = null;
         Lectura lecAnteriorAnterior = null;
@@ -34,7 +34,7 @@ public class Medidor {
                     System.out.println(lecAnteriorAnterior); // ------------------- Printing
                     break;
                 } else {
-                    return;
+                    return -1;
                 }
 
             }
@@ -70,9 +70,10 @@ public class Medidor {
             } else {
                 System.out.println("No requiere revision."); // ------------------- Printing
             }
-            lecAControlar.controlarLectura(requiereRevision);
+            return lecAControlar.controlarLectura(requiereRevision);
 
         }
+        return -1;
     }
 
     public Lectura[] getLecturas() {

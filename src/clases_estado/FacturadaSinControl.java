@@ -15,8 +15,8 @@ import clases_dominio.Propiedad;
 public class FacturadaSinControl extends Estado {
 
     @Override
-    public void controlarLectura(Lectura lectura, boolean requiereRevision) {
-        System.out.println("--------------------------------------------- Verificacion"); // ------------------- Printing
+    public int controlarLectura(Lectura lectura, boolean requiereRevision) {
+        System.out.println("--------------------------------------------- Cambio de Estado"); // ------------------- Printing
         System.out.println(lectura); // ------------------- Printing
         Estado estadoProximo;
         if (requiereRevision) {
@@ -29,7 +29,7 @@ public class FacturadaSinControl extends Estado {
 
         lectura.setEstado(estadoProximo);
         System.out.println(lectura);// ------------------- Printing
-
+        return estadoProximo.getCodigo();
     }
 
     @Override

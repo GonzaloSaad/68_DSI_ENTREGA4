@@ -11,6 +11,10 @@ package clases_estado;
  */
 public class ControladaFacturada extends Estado {
 
+    public ControladaFacturada() {
+        this.setCodigo(2);
+    }
+    
     
     
 }

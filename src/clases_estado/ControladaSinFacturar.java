@@ -10,5 +10,9 @@ package clases_estado;
  * @author Gonzalo
  */
 public class ControladaSinFacturar extends Estado {
+
+    public ControladaSinFacturar() {
+        this.setCodigo(1);
+    }
     
 }

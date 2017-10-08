@@ -10,5 +10,9 @@ package clases_estado;
  * @author Gonzalo
  */
 public class PendienteDeRevision extends Estado {
+
+    public PendienteDeRevision() {
+        this.setCodigo(0);
+    }
     
 }

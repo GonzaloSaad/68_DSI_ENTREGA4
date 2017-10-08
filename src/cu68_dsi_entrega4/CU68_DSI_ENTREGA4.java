@@ -23,7 +23,7 @@ public class CU68_DSI_ENTREGA4 {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        GestorControlLectura gestor = generarGestorConInfo(100, 20);
+        GestorControlLectura gestor = generarGestorConInfo(1000, 20);
         gestor.ejecutarControlLectura();
 
     }

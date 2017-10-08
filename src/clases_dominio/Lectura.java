@@ -29,8 +29,8 @@ public class Lectura {
         this.estado.crearFactura(this);
     }
 
-    public void controlarLectura(boolean requiereRevision) {
-        this.estado.controlarLectura(this,requiereRevision);
+    public int controlarLectura(boolean requiereRevision) {
+        return this.estado.controlarLectura(this,requiereRevision);
     }
 
     public void corregirLectura() {

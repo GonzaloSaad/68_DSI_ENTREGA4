@@ -15,6 +15,8 @@ public class Instalacion {
 
     private Date fechaInstalacion;
     private Date fechaRetiro;
+    private Medidor medidor;
+    private Lectura lecturaInicial;
 
     public Instalacion() {
         fechaRetiro = null;
@@ -27,8 +29,6 @@ public class Instalacion {
     public void setFechaRetiro(Date fechaRetiro) {
         this.fechaRetiro = fechaRetiro;
     }
-    private Medidor medidor;
-    private Lectura lecturaInicial;
 
     public Date getFechaInstalacion() {
         return fechaInstalacion;
@@ -54,8 +54,8 @@ public class Instalacion {
         this.lecturaInicial = lecturaInicial;
     }
 
-    public void controlarLectura(Date fechaDesde, Date fechaHasta) {
-        this.medidor.controlarLectura(fechaDesde, fechaHasta);
+    public int controlarLectura(Date fechaDesde, Date fechaHasta) {
+        return this.medidor.controlarLectura(fechaDesde, fechaHasta);
     }
 
     public boolean esInstalacionEnPeriodo(Date fechaDesde, Date fechaHasta) {

@@ -16,29 +16,30 @@ public abstract class Estado {
     private String nombre;
     private String ambito;
     private String descripcion;
+    private int codigo;
 
     public Estado() {
         this.setNombre(this.getClass().getSimpleName());
     }
 
-    
-    
     public void crearFactura(Lectura lectura) {
         /**
          * Implementacion Trivial*
          */
     }
 
-    public void controlarLectura(Lectura lectura, boolean requiereRevision) {
+    public int controlarLectura(Lectura lectura, boolean requiereRevision) {
         /**
          * Implementacion Trivial*
          */
+        return -1;
     }
 
     public void corregirLectura(Lectura lectura) {
         /**
          * Implementacion Trivial*
          */
+        
     }
 
     public void registrarMotivoDeNoCorreccion(Lectura lectura) {
@@ -60,37 +61,33 @@ public abstract class Estado {
     public boolean esFacturada() {
         return false;
     }
-    
-    public boolean esPendienteDeRevision(){
+
+    public boolean esPendienteDeRevision() {
         return false;
     }
 
-    public boolean esControladaFacturada(){
+    public boolean esControladaFacturada() {
         return false;
     }
-    
-    public boolean esFacturadaSinControl(){
+
+    public boolean esFacturadaSinControl() {
         return false;
     }
-    
-    public boolean esParaEvaluar(){
+
+    public boolean esParaEvaluar() {
         return false;
     }
-    
-    public boolean esCorregida(){
+
+    public boolean esCorregida() {
         return false;
     }
-    
-    public boolean esCorregidaFacturada(){
+
+    public boolean esCorregidaFacturada() {
         return false;
     }
-    
-    public boolean esRefacturada(){
+
+    public boolean esRefacturada() {
         return false;
-    }
-    @Override
-    public String toString() {
-        return "Estado{" + "nombre=" + nombre + '}';
     }
 
     public String getNombre() {
@@ -117,4 +114,16 @@ public abstract class Estado {
         this.descripcion = descripcion;
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    @Override
+    public String toString() {
+        return "Estado{" + "nombre=" + nombre + '}';
+    }
 }
