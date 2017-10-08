@@ -24,14 +24,14 @@ public class Medidor {
         for (int i = 0; i < lecturas.length; i++) {
             if (lecturas[i].esDePeriodo(fechaDesde, fechaHasta)) {
                 lecAControlar = lecturas[i];
-                
+
                 if (lecAControlar.esCreada() || lecAControlar.esFacturada()) {
                     lecAnterior = lecturas[i - 1];
                     lecAnteriorAnterior = lecturas[i - 2];
-                    System.out.println("--------------------------------------------------------");
-                    System.out.println(lecAControlar);
-                    System.out.println(lecAnterior);
-                    System.out.println(lecAnteriorAnterior);
+                    System.out.println("\n\n.................................................. Control"); // ------------------- Printing
+                    System.out.println(lecAControlar); // ------------------- Printing
+                    System.out.println(lecAnterior); // ------------------- Printing
+                    System.out.println(lecAnteriorAnterior); // ------------------- Printing
                     break;
                 } else {
                     return;
@@ -47,7 +47,8 @@ public class Medidor {
 
             double consumo = ((lecAControlar.getValorLectura() - lecAnterior.getValorLectura()) / (diasConsumoActual)) * 30;
             double consumoAnterior = ((lecAnterior.getValorLectura() - lecAnteriorAnterior.getValorLectura()) / diasConsumoAnterior) * 30;
-
+            System.out.println("Consumo actual:\t\t" +consumo); // ------------------- Printing
+            System.out.println("Consumo anterior:\t"+ consumoAnterior); // ------------------- Printing
             boolean requiereRevision = (lecAControlar.getValorLectura() - lecAnterior.getValorLectura()) <= 1
                     || Math.abs(consumo - consumoAnterior) >= 50;
 
@@ -80,10 +81,10 @@ public class Medidor {
     public String toString() {
         String aux = "\t\tMedidor{" + "numero=" + numero + '}';
         StringBuilder str = new StringBuilder(aux);
-        for (Lectura lec : lecturas){
+        for (Lectura lec : lecturas) {
             str.append("\n\t\t\t");
             str.append(lec);
-                    
+
         }
         return str.toString();
     }

@@ -154,7 +154,7 @@ public class RandomCreator {
 
         for (int i = 0; i < cant; i++) {
             vec[i] = value;
-            value += randomInt(15, 20, 1) * randomInt(0, 20, 1);
+            value += randomInt(5, 20, 1) * randomInt(0, 40, 1);
         }
         return vec;
     }
