@@ -65,11 +65,11 @@ public class Instalacion {
     @Override
     public String toString() {
         
-        return ("\nInstalacion{"
-                + "\nfechaInstalacion=" + fechaInstalacion
-                + "\nfechaRetiro=" + fechaRetiro
-                + "\nlecturaInicial=" + lecturaInicial
-                + "\nmedidor=" + medidor + '}');
+        return ("\n\tInstalacion{"
+                + "\n\tfechaInstalacion=" + fechaInstalacion
+                + "\n\tfechaRetiro=" + fechaRetiro
+                + "\n\tlecturaInicial=" + lecturaInicial
+                + "\n\tmedidor=" + medidor + '}');
         
     }
 

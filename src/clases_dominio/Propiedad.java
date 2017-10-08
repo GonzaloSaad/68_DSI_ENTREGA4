@@ -60,7 +60,7 @@ public class Propiedad {
 
     @Override
     public String toString() {
-        String aux = "Propiedad{" + "nroIdentificacionCatastral=" + nroIdentificacionCatastral;
+        String aux = "Propiedad{" + "\nnroIdentificacionCatastral=" + nroIdentificacionCatastral;
         StringBuilder str = new StringBuilder();
         for (Instalacion inst: instalaciones){
             str.append("\n");
