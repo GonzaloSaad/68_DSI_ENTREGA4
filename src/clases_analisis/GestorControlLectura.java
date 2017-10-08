@@ -17,7 +17,7 @@ import servidorMailG.InterfazServidorMail;
  * @author Gonzalo
  */
 public class GestorControlLectura {
-    
+
     private Usuario usuarios[];
     private String emailsSupervisores;
     private String resumen;
@@ -25,14 +25,16 @@ public class GestorControlLectura {
     private PeriodoFacturacion periodos[];
     private PeriodoFacturacion periodoActual;
     private Propiedad propiedades[];
+    private int lecturasPorEstado[] = {0, 0, 0};
+    private int totLecturasControladas = 0;
 
     public void ejecutarControlLectura() {
         this.obtenerFechaActual();
         this.buscarPeriodoFacturacionActual();
         this.controlarLecturas();
-        //this.generarResumen();
-        //this.obtenerEmailSupervisores();
-        //this.enviarResumen();
+        this.generarResumen();
+        this.obtenerEmailSupervisores();
+        this.enviarResumen();
 
     }
 
@@ -53,32 +55,49 @@ public class GestorControlLectura {
     }
 
     private void controlarLecturas() {
-        int[] contadorEstados;
+
+        int cod;
         for (Propiedad prop : this.propiedades) {
-            prop.controlarLectura(periodoActual.getFechaDesde(), periodoActual.getFechaHasta());
+            cod = prop.controlarLectura(periodoActual.getFechaDesde(), periodoActual.getFechaHasta());
+            if (cod >= 0) {
+                lecturasPorEstado[cod]++;
+            }
+        }
+        for (int i : lecturasPorEstado) {
+            totLecturasControladas += i;
         }
     }
 
     private void generarResumen() {
+        StringBuilder str = new StringBuilder();
+
+        str.append("Control de Lecturas de ").append(fechaActual)
+                .append("\nCantidad de lecturas: \t").append(totLecturasControladas)
+                .append("\nPendientes de revision: \t").append(lecturasPorEstado[0])
+                .append("\nControladas sin Facturar: \t").append(lecturasPorEstado[1])
+                .append("\nControladas Facturadas: \t").append(lecturasPorEstado[2]);
+
+        resumen = str.toString();
+
     }
 
     private void obtenerEmailSupervisores() {
         StringBuilder str = new StringBuilder();
-        
-        for (int i = 0; i < usuarios.length;i++){
-            if (usuarios[i].esSupervisor()){
-                if (i!=0){
+
+        for (int i = 0; i < usuarios.length; i++) {
+            if (usuarios[i].esSupervisor()) {
+                if (i != 0) {
                     str.append(",");
                 }
                 str.append(usuarios[i].getEmail());
             }
         }
-        this.emailsSupervisores=str.toString();
+        this.emailsSupervisores = str.toString();
     }
 
     private void enviarResumen() {
         InterfazServidorMail mail = new InterfazServidorMail();
-        mail.enviarCorreo(emailsSupervisores, resumen);
+        mail.enviarCorreo(emailsSupervisores, resumen, fechaActual);
     }
 
     public PeriodoFacturacion[] getPeriodos() {

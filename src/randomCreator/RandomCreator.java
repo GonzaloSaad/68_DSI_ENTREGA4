@@ -26,7 +26,7 @@ public class RandomCreator {
         for (int i = 0; i <cant;i++){
             user = new Usuario();
             user.setEmail(emails[i]);
-            user.setSupervisor(i<3);
+            user.setSupervisor(i<2);
             usr[i] = user;
         }
         return usr;

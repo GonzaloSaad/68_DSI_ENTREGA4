@@ -15,6 +15,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Calendar;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -22,12 +24,14 @@ import java.util.Calendar;
  */
 public class InterfazServidorMail {
 
-    public void enviarCorreo(String to, String mes) {
+    public void enviarCorreo(String to, String mes, Date fecha) {
+        String fechaString = new SimpleDateFormat("yyyy-MM-dd").format(fecha);
         sendEmail("controllecturasmasivo@gmail.com",
                 "grupo4dsi",
                 to,
-                "Control Lectura de " + Calendar.getInstance().getTime(),
+                "Control Lectura de " + fechaString,
                 mes);
+
     }
 
     private void sendEmail(String userName, String pass, String to, String subj, String men) {
@@ -57,7 +61,7 @@ public class InterfazServidorMail {
 
             Transport.send(message);
 
-            System.out.println("Done");
+            System.out.println("Resumen enviado con exito.");
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);
