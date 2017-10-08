@@ -61,31 +61,31 @@ public abstract class Estado {
         return false;
     }
     
-    public boolean pendienteDeRevision(){
+    public boolean esPendienteDeRevision(){
         return false;
     }
 
-    public boolean controladaFacturada(){
+    public boolean esControladaFacturada(){
         return false;
     }
     
-    public boolean facturadaSinControl(){
+    public boolean esFacturadaSinControl(){
         return false;
     }
     
-    public boolean paraEvaluar(){
+    public boolean esParaEvaluar(){
         return false;
     }
     
-    public boolean corregida(){
+    public boolean esCorregida(){
         return false;
     }
     
-    public boolean corregidaFacturada(){
+    public boolean esCorregidaFacturada(){
         return false;
     }
     
-    public boolean refacturada(){
+    public boolean esRefacturada(){
         return false;
     }
     @Override
