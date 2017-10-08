@@ -12,7 +12,24 @@ import java.util.Date;
  * @author Gonzalo
  */
 public class Propiedad {
+    
+    private int nroIdentificacionCatastral;
 
+    public int getNroIdentificacionCatastral() {
+        return nroIdentificacionCatastral;
+    }
+
+    public void setNroIdentificacionCatastral(int nroIdentificacionCatastral) {
+        this.nroIdentificacionCatastral = nroIdentificacionCatastral;
+    }
+
+    public Instalacion[] getInstalaciones() {
+        return instalaciones;
+    }
+
+    public void setInstalaciones(Instalacion[] instalaciones) {
+        this.instalaciones = instalaciones;
+    }
     private Instalacion instalaciones[];
 
     public void buscarLecturasAControlar() {
@@ -40,4 +57,18 @@ public class Propiedad {
         }
         return null;
     }
+
+    @Override
+    public String toString() {
+        String aux = "Propiedad{" + "nroIdentificacionCatastral=" + nroIdentificacionCatastral;
+        StringBuilder str = new StringBuilder();
+        for (Instalacion inst: instalaciones){
+            str.append("\n");
+            str.append(inst);
+        }
+        str.append("\n}");
+        return str.toString();
+    }
+    
+    
 }

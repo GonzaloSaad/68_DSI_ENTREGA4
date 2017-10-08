@@ -16,7 +16,30 @@ import java.util.Calendar;
  * @author estre
  */
 public class RandomCreator {
-
+    
+    public Propiedad[] createPropiedades(int cant){
+        Propiedad[] prop = new Propiedad[cant];
+        Calendar cal;
+        
+        int months;
+        int inst;
+        Propiedad nProp;
+        for (int i=0;i<cant;i++){
+            cal=Calendar.getInstance();
+            months=randomInt(30,50,1);
+            cal.add(Calendar.MONTH, -(months));
+            inst = randomInt(3,months/5,1);
+            
+            nProp=new Propiedad();
+            nProp.setNroIdentificacionCatastral(randomInt(100,100*cant,1));
+            nProp.setInstalaciones(createInstalaciones(cal.getTime(),inst));
+            prop[i]=nProp;
+            
+            
+        }
+        return prop;
+    }
+    
     public Instalacion[] createInstalaciones(Date dateFrom, int cant) {
         Instalacion insts[] = new Instalacion[cant];
         int months = monthDiffToDate(dateFrom);
