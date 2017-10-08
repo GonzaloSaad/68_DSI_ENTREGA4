@@ -19,18 +19,17 @@ public class FacturadaSinControl extends Estado {
         System.out.println("--------------------------------------------- Verificacion"); // ------------------- Printing
         System.out.println(lectura); // ------------------- Printing
         Estado estadoProximo;
-        if (requiereRevision){
+        if (requiereRevision) {
             estadoProximo = new PendienteDeRevision();
-            
-        }
-        else{
+
+        } else {
             estadoProximo = new ControladaFacturada();
-            
+
         }
-        
-        lectura.setEstado(estadoProximo); 
+
+        lectura.setEstado(estadoProximo);
         System.out.println(lectura);// ------------------- Printing
-        
+
     }
 
     @Override

@@ -20,19 +20,18 @@ public class Creada extends Estado {
     }
 
     @Override
-    public void controlarLectura(Lectura lectura,boolean requiereRevision) {
+    public void controlarLectura(Lectura lectura, boolean requiereRevision) {
         System.out.println("--------------------------------------------- Verificacion"); // ------------------- Printing
         System.out.println(lectura); // ------------------- Printing
         Estado estadoProximo;
-        if (requiereRevision){
+        if (requiereRevision) {
             estadoProximo = new PendienteDeRevision();
-            
-        }
-        else{
+
+        } else {
             estadoProximo = new ControladaSinFacturar();
-            
+
         }
-        
+
         lectura.setEstado(estadoProximo);
         System.out.println(lectura); // ------------------- Printing
     }

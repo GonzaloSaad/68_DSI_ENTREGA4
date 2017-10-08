@@ -12,10 +12,10 @@ import java.util.Date;
  * @author Gonzalo
  */
 public class Propiedad {
-    
+
     private int nroIdentificacionCatastral;
     private Instalacion instalaciones[];
-    
+
     public int getNroIdentificacionCatastral() {
         return nroIdentificacionCatastral;
     }
@@ -31,14 +31,13 @@ public class Propiedad {
     public void setInstalaciones(Instalacion[] instalaciones) {
         this.instalaciones = instalaciones;
     }
-    
 
     public void buscarLecturasAControlar() {
     }
 
     public void controlarLectura(Date fechaDesde, Date fechaHasta) {
         Instalacion instal = this.buscarInstalacionEnPeriodo(fechaDesde, fechaHasta);
-        if (instal == null){
+        if (instal == null) {
             return;
         }
         instal.controlarLectura(fechaDesde, fechaHasta);
@@ -65,13 +64,12 @@ public class Propiedad {
     public String toString() {
         String aux = "Propiedad{" + "\nnroIdentificacionCatastral=" + nroIdentificacionCatastral;
         StringBuilder str = new StringBuilder();
-        for (Instalacion inst: instalaciones){
+        for (Instalacion inst : instalaciones) {
             str.append("\n");
             str.append(inst);
         }
         str.append("\n}");
         return str.toString();
     }
-    
-    
+
 }

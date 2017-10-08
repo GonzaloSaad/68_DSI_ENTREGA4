@@ -17,24 +17,24 @@ import java.util.Calendar;
  */
 public class RandomCreator {
 
-    public PeriodoFacturacion[] createPeriodos(int cant){
+    public PeriodoFacturacion[] createPeriodos(int cant) {
         PeriodoFacturacion[] periodos = new PeriodoFacturacion[cant];
         Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE,10);
+        cal.add(Calendar.DATE, 10);
         cal.add(Calendar.MONTH, -cant);
-        
+
         PeriodoFacturacion aux;
-        for (int i = 0; i<cant;i++){
+        for (int i = 0; i < cant; i++) {
             aux = new PeriodoFacturacion();
             aux.setFechaDesde(cal.getTime());
             cal.add(Calendar.MONTH, 1);
             aux.setFechaHasta(cal.getTime());
-            periodos[i]=aux;
+            periodos[i] = aux;
         }
         return periodos;
-        
+
     }
-    
+
     public Propiedad[] createPropiedades(int cant) {
         Propiedad[] prop = new Propiedad[cant];
         Calendar cal;

@@ -62,14 +62,12 @@ public class Medidor {
 
             if (consumoMenorAlEsperado) {
                 System.out.println("Consumo menor al esperado: \t SI"); // ------------------- Printing
-            }
-            else{
+            } else {
                 System.out.println("Consumo menor al esperado: \t NO"); // ------------------- Printing
             }
-            if (requiereRevision){
+            if (requiereRevision) {
                 System.out.println("Requiere revision."); // ------------------- Printing
-            }
-            else{
+            } else {
                 System.out.println("No requiere revision."); // ------------------- Printing
             }
             lecAControlar.controlarLectura(requiereRevision);
