@@ -16,7 +16,22 @@ import java.util.Calendar;
  * @author estre
  */
 public class RandomCreator {
-
+    
+    public Usuario[] createUsuarios(){
+        int cant = 5;
+        Usuario[] usr = new Usuario[cant];
+        String emails[]={"saad.gonzalo.ale@gmail.com","estrellangie19@gmail.com","pepito@gmail.com","juanito@gmail.com","pepe@gmail.com"};
+        
+        Usuario user;
+        for (int i = 0; i <cant;i++){
+            user = new Usuario();
+            user.setEmail(emails[i]);
+            user.setSupervisor(i<3);
+            usr[i] = user;
+        }
+        return usr;
+    }
+    
     public PeriodoFacturacion[] createPeriodos(int cant) {
         PeriodoFacturacion[] periodos = new PeriodoFacturacion[cant];
         Calendar cal = Calendar.getInstance();
@@ -192,4 +207,6 @@ public class RandomCreator {
         }
         return vec;
     }
+    
+    
 }

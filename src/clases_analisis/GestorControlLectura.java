@@ -9,13 +9,18 @@ import java.util.Date;
 import java.util.Calendar;
 import clases_dominio.PeriodoFacturacion;
 import clases_dominio.Propiedad;
+import clases_dominio.Usuario;
+import servidorMailG.InterfazServidorMail;
 
 /**
  *
  * @author Gonzalo
  */
 public class GestorControlLectura {
-
+    
+    private Usuario usuarios[];
+    private String emailsSupervisores;
+    private String resumen;
     private Date fechaActual;
     private PeriodoFacturacion periodos[];
     private PeriodoFacturacion periodoActual;
@@ -58,9 +63,22 @@ public class GestorControlLectura {
     }
 
     private void obtenerEmailSupervisores() {
+        StringBuilder str = new StringBuilder();
+        
+        for (int i = 0; i < usuarios.length;i++){
+            if (usuarios[i].esSupervisor()){
+                if (i!=0){
+                    str.append(",");
+                }
+                str.append(usuarios[i].getEmail());
+            }
+        }
+        this.emailsSupervisores=str.toString();
     }
 
     private void enviarResumen() {
+        InterfazServidorMail mail = new InterfazServidorMail();
+        mail.enviarCorreo(emailsSupervisores, resumen);
     }
 
     public PeriodoFacturacion[] getPeriodos() {
@@ -78,7 +96,13 @@ public class GestorControlLectura {
     public void setPropiedades(Propiedad[] propiedades) {
         this.propiedades = propiedades;
     }
-    
-    
-    
+
+    public Usuario[] getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Usuario[] usuarios) {
+        this.usuarios = usuarios;
+    }
+
 }

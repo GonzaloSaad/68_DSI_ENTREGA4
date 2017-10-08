@@ -14,6 +14,10 @@ public class Usuario {
     private String email;
     private boolean supervisor;
 
+    public void setSupervisor(boolean supervisor) {
+        this.supervisor = supervisor;
+    }
+
     public boolean esSupervisor() {
         return supervisor;
 
@@ -21,6 +25,10 @@ public class Usuario {
 
     public String getEmail() {
         return email;
-        
+
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

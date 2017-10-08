@@ -31,7 +31,7 @@ public class CU68_DSI_ENTREGA4 {
         gestor.ejecutarControlLectura();
         **/
         InterfazServidorMail mail = new InterfazServidorMail();
-        mail.enviarCorreo("saad.gonzalo.ale@gmail.com", "Gonzalo");
+        mail.enviarCorreo("saad.gonzalo.ale@gmail.com,estrellangie19@gmail.com", "Gonzalo");
         
         
         
