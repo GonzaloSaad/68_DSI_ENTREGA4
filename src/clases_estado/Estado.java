@@ -60,7 +60,34 @@ public abstract class Estado {
     public boolean esFacturada() {
         return false;
     }
+    
+    public boolean pendienteDeRevision(){
+        return false;
+    }
 
+    public boolean controladaFacturada(){
+        return false;
+    }
+    
+    public boolean facturadaSinControl(){
+        return false;
+    }
+    
+    public boolean paraEvaluar(){
+        return false;
+    }
+    
+    public boolean corregida(){
+        return false;
+    }
+    
+    public boolean corregidaFacturada(){
+        return false;
+    }
+    
+    public boolean refacturada(){
+        return false;
+    }
     @Override
     public String toString() {
         return "Estado{" + "nombre=" + nombre + '}';
