@@ -38,7 +38,9 @@ public class Propiedad {
 
     public void controlarLectura(Date fechaDesde, Date fechaHasta) {
         Instalacion instal = this.buscarInstalacionEnPeriodo(fechaDesde, fechaHasta);
-
+        if (instal == null){
+            return;
+        }
         instal.controlarLectura(fechaDesde, fechaHasta);
     }
 

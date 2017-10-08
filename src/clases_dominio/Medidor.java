@@ -47,11 +47,31 @@ public class Medidor {
 
             double consumo = ((lecAControlar.getValorLectura() - lecAnterior.getValorLectura()) / (diasConsumoActual)) * 30;
             double consumoAnterior = ((lecAnterior.getValorLectura() - lecAnteriorAnterior.getValorLectura()) / diasConsumoAnterior) * 30;
-            System.out.println("Consumo actual:\t\t" +consumo); // ------------------- Printing
-            System.out.println("Consumo anterior:\t"+ consumoAnterior); // ------------------- Printing
-            boolean requiereRevision = (lecAControlar.getValorLectura() - lecAnterior.getValorLectura()) <= 1
-                    || Math.abs(consumo - consumoAnterior) >= 50;
+            System.out.println("Consumo actual:\t\t" + consumo); // ------------------- Printing
+            System.out.println("Consumo anterior:\t" + consumoAnterior); // ------------------- Printing
 
+            boolean consumoNulo = (lecAControlar.getValorLectura() - lecAnterior.getValorLectura()) <= 1;
+            boolean consumoMenorAlEsperado = Math.abs(consumo - consumoAnterior) >= 50;
+            boolean requiereRevision = consumoNulo || consumoMenorAlEsperado;
+
+            if (consumoNulo) {
+                System.out.println("Consumo nulo: \tSI"); // ------------------- Printing
+            } else {
+                System.out.println("Consumo nulo: \tNO"); // ------------------- Printing
+            }
+
+            if (consumoMenorAlEsperado) {
+                System.out.println("Consumo menor al esperado: \t SI"); // ------------------- Printing
+            }
+            else{
+                System.out.println("Consumo menor al esperado: \t NO"); // ------------------- Printing
+            }
+            if (requiereRevision){
+                System.out.println("Requiere revision."); // ------------------- Printing
+            }
+            else{
+                System.out.println("No requiere revision."); // ------------------- Printing
+            }
             lecAControlar.controlarLectura(requiereRevision);
 
         }

@@ -26,11 +26,11 @@ public class Creada extends Estado {
         Estado estadoProximo;
         if (requiereRevision){
             estadoProximo = new PendienteDeRevision();
-            System.out.println("Requiere revision."); // ------------------- Printing
+            
         }
         else{
             estadoProximo = new ControladaSinFacturar();
-            System.out.println("No requiere revision."); // ------------------- Printing
+            
         }
         
         lectura.setEstado(estadoProximo);

@@ -21,11 +21,11 @@ public class FacturadaSinControl extends Estado {
         Estado estadoProximo;
         if (requiereRevision){
             estadoProximo = new PendienteDeRevision();
-            System.out.println("Requiere revision.");// ------------------- Printing
+            
         }
         else{
             estadoProximo = new ControladaFacturada();
-            System.out.println("No requiere revision."); // ------------------- Printing
+            
         }
         
         lectura.setEstado(estadoProximo); 
