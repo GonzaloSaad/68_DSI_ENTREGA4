@@ -30,9 +30,9 @@ public class GestorControlLectura {
         this.obtenerFechaActual();
         this.buscarPeriodoFacturacionActual();
         this.controlarLecturas();
-        this.generarResumen();
-        this.obtenerEmailSupervisores();
-        this.enviarResumen();
+        //this.generarResumen();
+        //this.obtenerEmailSupervisores();
+        //this.enviarResumen();
 
     }
 
