@@ -49,7 +49,7 @@ public class Medidor {
             double consumoAnterior = ((lecAnterior.getValorLectura() - lecAnteriorAnterior.getValorLectura()) / diasConsumoAnterior) * 30;
 
             boolean requiereRevision = (lecAControlar.getValorLectura() - lecAnterior.getValorLectura()) <= 1
-                    || Math.abs(consumo - consumoAnterior) > 50;
+                    || Math.abs(consumo - consumoAnterior) >= 50;
 
             lecAControlar.controlarLectura(requiereRevision);
 
