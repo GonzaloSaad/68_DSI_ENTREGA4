@@ -24,10 +24,14 @@ public class Medidor {
         for (int i = 0; i < lecturas.length; i++) {
             if (lecturas[i].esDePeriodo(fechaDesde, fechaHasta)) {
                 lecAControlar = lecturas[i];
-
+                
                 if (lecAControlar.esCreada() || lecAControlar.esFacturada()) {
                     lecAnterior = lecturas[i - 1];
                     lecAnteriorAnterior = lecturas[i - 2];
+                    System.out.println("--------------------------------------------------------");
+                    System.out.println(lecAControlar);
+                    System.out.println(lecAnterior);
+                    System.out.println(lecAnteriorAnterior);
                     break;
                 } else {
                     return;
@@ -45,7 +49,7 @@ public class Medidor {
             double consumoAnterior = ((lecAnterior.getValorLectura() - lecAnteriorAnterior.getValorLectura()) / diasConsumoAnterior) * 30;
 
             boolean requiereRevision = (lecAControlar.getValorLectura() - lecAnterior.getValorLectura()) <= 1
-                    || Math.abs(consumo - consumoAnterior) < 50;
+                    || Math.abs(consumo - consumoAnterior) > 50;
 
             lecAControlar.controlarLectura(requiereRevision);
 
