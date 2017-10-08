@@ -59,7 +59,12 @@ public class Instalacion {
     }
 
     public boolean esInstalacionEnPeriodo(Date fechaDesde, Date fechaHasta) {
-        return (fechaInstalacion.after(fechaDesde) && fechaInstalacion.before(fechaHasta));
+        
+        if (fechaRetiro != null){
+             return (fechaInstalacion.before(fechaDesde) && fechaInstalacion.after(fechaHasta));                     
+        }
+        
+        return fechaInstalacion.before(fechaDesde);
     }
 
     @Override

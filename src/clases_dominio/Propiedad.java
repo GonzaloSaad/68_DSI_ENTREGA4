@@ -14,7 +14,8 @@ import java.util.Date;
 public class Propiedad {
     
     private int nroIdentificacionCatastral;
-
+    private Instalacion instalaciones[];
+    
     public int getNroIdentificacionCatastral() {
         return nroIdentificacionCatastral;
     }
@@ -30,7 +31,7 @@ public class Propiedad {
     public void setInstalaciones(Instalacion[] instalaciones) {
         this.instalaciones = instalaciones;
     }
-    private Instalacion instalaciones[];
+    
 
     public void buscarLecturasAControlar() {
     }

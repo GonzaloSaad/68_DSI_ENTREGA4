@@ -62,6 +62,23 @@ public class GestorControlLectura {
 
     private void enviarResumen() {
     }
+
+    public PeriodoFacturacion[] getPeriodos() {
+        return periodos;
+    }
+
+    public void setPeriodos(PeriodoFacturacion[] periodos) {
+        this.periodos = periodos;
+    }
+
+    public Propiedad[] getPropiedades() {
+        return propiedades;
+    }
+
+    public void setPropiedades(Propiedad[] propiedades) {
+        this.propiedades = propiedades;
+    }
+    
     
     
 }

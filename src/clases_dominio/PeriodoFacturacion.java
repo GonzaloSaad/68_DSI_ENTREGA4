@@ -41,6 +41,14 @@ public class PeriodoFacturacion {
     public boolean esPeriodoDeFecha(Date fecha){
         return (this.fechaDesde.before(fecha) && this.fechaHasta.after(fecha));
     }
+
+    @Override
+    public String toString() {
+        return "PeriodoFacturacion{" 
+                + "\n\tfechaDesde=" + fechaDesde 
+                + "\n\tfechaHasta=" + fechaHasta + '}';
+    }
+    
     
     
 }

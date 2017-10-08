@@ -7,11 +7,9 @@ package cu68_dsi_entrega4;
 
 import clases_analisis.GestorControlLectura;
 import clases_dominio.Propiedad;
-import clases_estado.*;
-import java.util.Date;
-import java.util.Calendar;
+import clases_dominio.PeriodoFacturacion;
 import randomCreator.RandomCreator;
-import java.util.Random;
+
 
 /**
  *
@@ -25,11 +23,24 @@ public class CU68_DSI_ENTREGA4 {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        GestorControlLectura gestor = new GestorControlLectura();
+        GestorControlLectura gestor = generarGestorConInfo(20,20);
+        gestor.ejecutarControlLectura();
+        
+        
+        
+    }
+    
+    public static GestorControlLectura generarGestorConInfo(int props,int periodos){
         RandomCreator rc = new RandomCreator();
-        Propiedad propiedades[] = rc.createPropiedades(50);
+        
+        Propiedad propiedades[] = rc.createPropiedades(props);
+        PeriodoFacturacion per[] = rc.createPeriodos(periodos);
+        
+        GestorControlLectura gestor = new GestorControlLectura();
+        gestor.setPeriodos(per);
+        gestor.setPropiedades(propiedades);
         
         
-
+        return gestor;
     }
 }
