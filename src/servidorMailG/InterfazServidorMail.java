@@ -61,7 +61,7 @@ public class InterfazServidorMail {
 
             Transport.send(message);
 
-            System.out.println("Resumen enviado con exito.");
+            System.out.println("\tResumen enviado con exito.");
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);

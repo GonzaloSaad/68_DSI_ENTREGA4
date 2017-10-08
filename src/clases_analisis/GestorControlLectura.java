@@ -33,8 +33,9 @@ public class GestorControlLectura {
         this.buscarPeriodoFacturacionActual();
         this.controlarLecturas();
         this.generarResumen();
+        System.out.println("\n"+resumen);
         this.obtenerEmailSupervisores();
-        this.enviarResumen();
+        //this.enviarResumen();
 
     }
 
@@ -72,10 +73,10 @@ public class GestorControlLectura {
         StringBuilder str = new StringBuilder();
 
         str.append("Control de Lecturas de ").append(fechaActual)
-                .append("\nCantidad de lecturas:\t\t").append(totLecturasControladas)
-                .append("\nPendientes de revision:\t").append(lecturasPorEstado[0])
-                .append("\nControladas sin Facturar:\t").append(lecturasPorEstado[1])
-                .append("\nControladas Facturadas:\t").append(lecturasPorEstado[2]);
+                .append("\nCantidad de lecturas:       ").append(totLecturasControladas)
+                .append("\nPendientes de revision:     ").append(lecturasPorEstado[0])
+                .append("\nControladas sin Facturar:   ").append(lecturasPorEstado[1])
+                .append("\nControladas Facturadas:     ").append(lecturasPorEstado[2]);
 
         resumen = str.toString();
 
@@ -97,6 +98,7 @@ public class GestorControlLectura {
 
     private void enviarResumen() {
         InterfazServidorMail mail = new InterfazServidorMail();
+        System.out.println("Enviando resumen...");
         mail.enviarCorreo(emailsSupervisores, resumen, fechaActual);
     }
 
