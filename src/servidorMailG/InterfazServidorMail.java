@@ -5,10 +5,16 @@
  */
 package servidorMailG;
 
-import java.util.*;
+import java.util.Properties;
 
-import javax.mail.*;
-import javax.mail.internet.*;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Calendar;
 
 /**
  *
@@ -16,46 +22,45 @@ import javax.mail.internet.*;
  */
 public class InterfazServidorMail {
 
-    public void enviarCorreos() {
-
+    public void enviarCorreo(String to, String mes) {
+        sendEmail("controllecturasmasivo@gmail.com",
+                "grupo4dsi",
+                to,
+                "Control Lectura de " + Calendar.getInstance().getTime(),
+                mes);
     }
 
-    private void sendFromGMail(String from, String pass, String[] to, String subject, String body) {
-        Properties props = System.getProperties();
-        String host = "smtp.gmail.com";
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", host);
-        props.put("mail.smtp.user", from);
-        props.put("mail.smtp.password", pass);
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.auth", "true");
+    private void sendEmail(String userName, String pass, String to, String subj, String men) {
 
-        Session session = Session.getDefaultInstance(props);
-        MimeMessage message = new MimeMessage(session);
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(userName, pass);
+            }
+        });
 
         try {
-            message.setFrom(new InternetAddress(from));
-            InternetAddress[] toAddress = new InternetAddress[to.length];
 
-            // To get the array of addresses
-            for (int i = 0; i < to.length; i++) {
-                toAddress[i] = new InternetAddress(to[i]);
-            }
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(userName));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(to));
+            message.setSubject(subj);
+            message.setText(men);
 
-            for (int i = 0; i < toAddress.length; i++) {
-                message.addRecipient(Message.RecipientType.TO, toAddress[i]);
-            }
+            Transport.send(message);
 
-            message.setSubject(subject);
-            message.setText(body);
-            Transport transport = session.getTransport("smtp");
-            transport.connect(host, from, pass);
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
-        } catch (AddressException ae) {
-            ae.printStackTrace();
-        } catch (MessagingException me) {
-            me.printStackTrace();
+            System.out.println("Done");
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
         }
     }
 }
