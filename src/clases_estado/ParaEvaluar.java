@@ -10,6 +10,11 @@ package clases_estado;
  * @author estre
  */
 public class ParaEvaluar extends Estado {
+
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean esParaEvaluar(){
         return true;
