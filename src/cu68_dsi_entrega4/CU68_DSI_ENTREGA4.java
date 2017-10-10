@@ -23,7 +23,16 @@ public class CU68_DSI_ENTREGA4 {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        GestorControlLectura gestor = generarGestorConInfo(1000, 20);
+        /**
+         * Se crea un GestorControlLectura mediante el metodo
+         * generarGestorConInfo() que retorna un gestor con todos
+         * los datos necesarios para el CU. 
+         */
+        GestorControlLectura gestor = generarGestorConInfo(1000, 20); 
+        
+        /**
+         * Se da Comienzo al CU. 
+         */
         gestor.ejecutarControlLectura();
 
     }
