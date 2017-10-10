@@ -22,6 +22,41 @@ public class Instalacion {
         fechaRetiro = null;
     }
 
+    public int controlarLectura(Date fechaDesde, Date fechaHasta) {
+        /**
+         * Metodo que recibe desde la propiedad en el momento de ejecutar el
+         * control de lecturas.
+         *
+         * Le envia el mensaje controlarLectura() al medidor con los mismos
+         * parametros.
+         */
+
+        return this.medidor.controlarLectura(fechaDesde, fechaHasta);
+    }
+
+    public boolean esInstalacionEnPeriodo(Date fechaDesde, Date fechaHasta) {
+        /**
+         * Metodo que indica si la Instalacion es de un periodo dado.
+         *
+         * Si la fecha de retiro no es null: 
+         * 1) La fecha de instalacion debe ser menor al a fechaDesde. 
+         * 2) La fecha de retiro debe ser mayor a la fechaHasta. 
+         *    Es decir, el periodo debe estar contenido entre ambas fechas.
+         *
+         * Si la fecha de retino es null: 1) La fecha de instalacion debe ser
+         * anterior al a fechaDesde.
+         */
+
+        if (fechaRetiro != null) {
+            return (fechaInstalacion.before(fechaDesde) && fechaRetiro.after(fechaHasta));
+        }
+
+        return fechaInstalacion.before(fechaDesde);
+    }
+
+    /*
+        Siguen metodos de set/get y toString.
+     */
     public Date getFechaRetiro() {
         return fechaRetiro;
     }
@@ -52,19 +87,6 @@ public class Instalacion {
 
     public void setLecturaInicial(Lectura lecturaInicial) {
         this.lecturaInicial = lecturaInicial;
-    }
-
-    public int controlarLectura(Date fechaDesde, Date fechaHasta) {
-        return this.medidor.controlarLectura(fechaDesde, fechaHasta);
-    }
-
-    public boolean esInstalacionEnPeriodo(Date fechaDesde, Date fechaHasta) {
-
-        if (fechaRetiro != null) {
-            return (fechaInstalacion.before(fechaDesde) && fechaInstalacion.after(fechaHasta));
-        }
-
-        return fechaInstalacion.before(fechaDesde);
     }
 
     @Override

@@ -16,6 +16,40 @@ public class Propiedad {
     private int nroIdentificacionCatastral;
     private Instalacion instalaciones[];
 
+    public int controlarLectura(Date fechaDesde, Date fechaHasta) {
+
+        /**
+         * Metodo llamado por el gestor en el control de lecturas. Recibe dos
+         * fechas, correspondientes a las del periodo a controlar.
+         *
+         * Con esas fechas busca la instalacion correspondiente. * a) Si no
+         * existe retorna -1 y no prosigue con el control. b) Si existe, le
+         * envia el mensaje controlarLectura() con los mismos parametros.
+         */
+        Instalacion instal = this.buscarInstalacionEnPeriodo(fechaDesde, fechaHasta);
+        if (instal == null) {
+            return -1;
+        }
+        return instal.controlarLectura(fechaDesde, fechaHasta);
+    }
+
+    public Instalacion buscarInstalacionEnPeriodo(Date fechaDesde, Date fechaHasta) {
+        /**
+         * Busca la instalaciones del periodo. Si no encuentra retorna null. Si
+         * encuentra retorna la instalacion.
+         */
+
+        for (Instalacion inst : instalaciones) {
+            if (inst.esInstalacionEnPeriodo(fechaDesde, fechaHasta)) {
+                return inst;
+            }
+        }
+        return null;
+    }
+
+    /*
+        Sigue metodos de set/get y toString.
+     */
     public int getNroIdentificacionCatastral() {
         return nroIdentificacionCatastral;
     }
@@ -30,34 +64,6 @@ public class Propiedad {
 
     public void setInstalaciones(Instalacion[] instalaciones) {
         this.instalaciones = instalaciones;
-    }
-
-    public void buscarLecturasAControlar() {
-    }
-
-    public int controlarLectura(Date fechaDesde, Date fechaHasta) {
-        Instalacion instal = this.buscarInstalacionEnPeriodo(fechaDesde, fechaHasta);
-        if (instal == null) {
-            return -1;
-        }
-        return instal.controlarLectura(fechaDesde, fechaHasta);
-    }
-
-    public boolean verificarConsumoEscaso() {
-        return true;
-    }
-
-    public boolean verificarConsumoMenorAEsperado() {
-        return true;
-    }
-
-    public Instalacion buscarInstalacionEnPeriodo(Date fechaDesde, Date fechaHasta) {
-        for (Instalacion inst : instalaciones) {
-            if (inst.esInstalacionEnPeriodo(fechaDesde, fechaHasta)) {
-                return inst;
-            }
-        }
-        return null;
     }
 
     @Override

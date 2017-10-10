@@ -7,30 +7,30 @@ package clases_dominio;
 
 import clases_estado.Estado;
 import java.util.Date;
+
 /**
  *
  * @author Gonzalo
  */
 public class Lectura {
+
     private Date fechaHoraLectura;
     private double valorLectura;
     private double valorCorregido;
     private double valorEstimado;
-    
-    
-    
     private Estado estado;
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
 
     public void crearFactura() {
         this.estado.crearFactura(this);
     }
 
     public int controlarLectura(boolean requiereRevision) {
-        return this.estado.controlarLectura(this,requiereRevision);
+        /**
+         * Le pasa el mismo mensaje al estado (PATRON STATE) y adems se pasa a
+         * si mismo por parametro.
+         */
+
+        return this.estado.controlarLectura(this, requiereRevision);
     }
 
     public void corregirLectura() {
@@ -52,9 +52,20 @@ public class Lectura {
     public boolean esFacturada() {
         return this.estado.esFacturada();
     }
-    
-    public boolean esDePeriodo(Date fechaDesde,Date fechaHasta){
+
+    public boolean esDePeriodo(Date fechaDesde, Date fechaHasta) {
         return (this.fechaHoraLectura.after(fechaDesde) && this.fechaHoraLectura.before(fechaHasta));
+    }
+
+    /*
+        Siguen metodos de set/get y toString.
+     */
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public Date getFechaHoraLectura() {
@@ -89,12 +100,9 @@ public class Lectura {
         this.valorEstimado = valorEstimado;
     }
 
-    
-
-    
     @Override
     public String toString() {
         return "Lectura{" + "fechaHoraLectura=" + fechaHoraLectura + ", valorLectura=" + valorLectura + ", estado=" + estado + '}';
     }
-            
+
 }

@@ -128,7 +128,7 @@ public class GestorControlLectura {
         StringBuilder str = new StringBuilder();
 
         str.append("Control de Lecturas de ").append(fechaActual)
-                .append("\nCantidad de lecturas:       ").append(totLecturasControladas)
+                .append("\nCantidad de lecturas controladas:       ").append(totLecturasControladas)
                 .append("\nPendientes de revision:     ").append(lecturasPorEstado[0])
                 .append("\nControladas sin Facturar:   ").append(lecturasPorEstado[1])
                 .append("\nControladas Facturadas:     ").append(lecturasPorEstado[2]);
@@ -167,7 +167,7 @@ public class GestorControlLectura {
          */
 
         InterfazServidorMail mail = new InterfazServidorMail();
-        System.out.println("Enviando resumen...");
+        System.out.println("\n\n\nEnviando resumen...");
         mail.enviarCorreo(emailsSupervisores, resumen, fechaActual);
     }
 

@@ -18,20 +18,18 @@ public class CU68_DSI_ENTREGA4 {
     /**
      * @param args the command line arguments
      */
-    
-    
     public static void main(String[] args) {
         // TODO code application logic here
 
         /**
          * Se crea un GestorControlLectura mediante el metodo
-         * generarGestorConInfo() que retorna un gestor con todos
-         * los datos necesarios para el CU. 
+         * generarGestorConInfo() que retorna un gestor con todos los datos
+         * necesarios para el CU.
          */
-        GestorControlLectura gestor = generarGestorConInfo(1000, 20); 
-        
+        GestorControlLectura gestor = generarGestorConInfo(1000, 20);
+
         /**
-         * Se da Comienzo al CU. 
+         * Se da Comienzo al CU.
          */
         gestor.ejecutarControlLectura();
 
@@ -39,13 +37,17 @@ public class CU68_DSI_ENTREGA4 {
 
     public static GestorControlLectura generarGestorConInfo(int props, int periodos) {
 
+        /**
+         * Intancia de la clase RandomCreator, que genera los datos necesarios
+         * para fabricar el gestor.
+         */
         RandomCreator rc = new RandomCreator();
 
-        GestorControlLectura gestor = new GestorControlLectura();
-        gestor.setPeriodos(rc.createPeriodos(periodos));
-        gestor.setPropiedades(rc.createPropiedades(props));
-        gestor.setUsuarios(rc.createUsuarios());
+        GestorControlLectura gestor = new GestorControlLectura(); // Se intancia un gestor. 
+        gestor.setPeriodos(rc.createPeriodos(periodos)); // Seteo de periodos. 
+        gestor.setPropiedades(rc.createPropiedades(props)); // Seteo de propiedades.
+        gestor.setUsuarios(rc.createUsuarios()); // Seteo de usuarios. 
 
-        return gestor;
+        return gestor; // Se retorna el gestor. 
     }
 }

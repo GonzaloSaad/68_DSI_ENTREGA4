@@ -11,10 +11,7 @@ package clases_estado;
  */
 public class CorregidaFacturada extends Estado {
 
-    /**
-     *
-     * @return
-     */
+    
     @Override
     public boolean esCorregidaFacturada(){
         return true;

@@ -17,6 +17,25 @@ public class Medidor {
     private int numero;
 
     public int controlarLectura(Date fechaDesde, Date fechaHasta) {
+        
+        /**
+         * Metodo llamado desde instalacion en el momento de control de lecturas. 
+         * 
+         * Busca entre todas las lecturas, aquella que sea del periodo de las 
+         * fechas pasadas por parametro.
+         *      a)Si encuentra, verifica que sea creada o facturada. 
+         *          A)Si es creada o facturada, busca sus dos anteriores. 
+         *              1)  Calcula el consumo actual y anterior y crea una 
+         *                  variable booleana requiereRevision. 
+         *              2)  Se llama al controlar lectura de lectura con 
+         *                  el parametro requiereRevision.
+         *          B)Si no, retorna -1.
+         *      b)Si no encuentra, retorna -1.
+         * 
+         
+         */
+        
+        
         Lectura lecAControlar = null;
         Lectura lecAnterior = null;
         Lectura lecAnteriorAnterior = null;
@@ -42,11 +61,9 @@ public class Medidor {
         }
         if (lecAControlar != null) {
 
-            int diasConsumoActual = (int) ((lecAControlar.getFechaHoraLectura().getTime() - lecAnterior.getFechaHoraLectura().getTime()) / (1000 * 60 * 60 * 24));
-            int diasConsumoAnterior = (int) ((lecAnterior.getFechaHoraLectura().getTime() - lecAnteriorAnterior.getFechaHoraLectura().getTime()) / (1000 * 60 * 60 * 24));
+            double consumo = calcularConsumoNormalizado(lecAControlar, lecAnterior);
+            double consumoAnterior = calcularConsumoNormalizado(lecAnterior, lecAnteriorAnterior);
 
-            double consumo = ((lecAControlar.getValorLectura() - lecAnterior.getValorLectura()) / (diasConsumoActual)) * 30;
-            double consumoAnterior = ((lecAnterior.getValorLectura() - lecAnteriorAnterior.getValorLectura()) / diasConsumoAnterior) * 30;
             System.out.println("Consumo actual:\t\t" + consumo); // ------------------- Printing
             System.out.println("Consumo anterior:\t" + consumoAnterior); // ------------------- Printing
 
@@ -76,6 +93,23 @@ public class Medidor {
         return -1;
     }
 
+    public Lectura getUltimaLectura() {
+        return lecturas[lecturas.length - 1];
+    }
+
+    private double calcularConsumoNormalizado(Lectura lec, Lectura lecAnterior) {
+        int diasConsumo = getDiasLectura(lec, lecAnterior);
+        return ((lec.getValorLectura() - lecAnterior.getValorLectura()) / (diasConsumo)) * 30;
+    }
+    
+    /*
+        Siguen metodos de set/get y to String.
+    */
+    
+    private int getDiasLectura(Lectura lec, Lectura lecAnterior) {
+        return (int) ((lec.getFechaHoraLectura().getTime() - lecAnterior.getFechaHoraLectura().getTime()) / (1000 * 60 * 60 * 24));
+    }
+
     public Lectura[] getLecturas() {
         return lecturas;
     }
@@ -90,10 +124,6 @@ public class Medidor {
 
     public void setNumero(int numero) {
         this.numero = numero;
-    }
-
-    public Lectura getUltimaLectura() {
-        return lecturas[lecturas.length - 1];
     }
 
     @Override
