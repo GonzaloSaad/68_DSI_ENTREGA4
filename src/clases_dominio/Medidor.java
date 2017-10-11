@@ -78,9 +78,9 @@ public class Medidor {
             }
 
             if (consumoMenorAlEsperado) {
-                System.out.println("Consumo menor al esperado: \t SI"); // ------------------- Printing
+                System.out.println("Diferencia mayor a la esperada: \t SI"); // ------------------- Printing
             } else {
-                System.out.println("Consumo menor al esperado: \t NO"); // ------------------- Printing
+                System.out.println("Diferencia mayor a la esperada: \t NO"); // ------------------- Printing
             }
             if (requiereRevision) {
                 System.out.println("Requiere revision."); // ------------------- Printing
@@ -136,6 +136,10 @@ public class Medidor {
 
         }
         return str.toString();
+    }
+    
+    public int cantidadLecturas(){
+        return this.lecturas.length;
     }
 
 }

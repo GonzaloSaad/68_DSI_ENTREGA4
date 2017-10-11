@@ -38,10 +38,10 @@ public class Instalacion {
         /**
          * Metodo que indica si la Instalacion es de un periodo dado.
          *
-         * Si la fecha de retiro no es null: 
-         * 1) La fecha de instalacion debe ser menor al a fechaDesde. 
-         * 2) La fecha de retiro debe ser mayor a la fechaHasta. 
-         *    Es decir, el periodo debe estar contenido entre ambas fechas.
+         * Si la fecha de retiro no es null: 1) La fecha de instalacion debe ser
+         * menor al a fechaDesde. 2) La fecha de retiro debe ser mayor a la
+         * fechaHasta. Es decir, el periodo debe estar contenido entre ambas
+         * fechas.
          *
          * Si la fecha de retino es null: 1) La fecha de instalacion debe ser
          * anterior al a fechaDesde.
@@ -100,4 +100,7 @@ public class Instalacion {
 
     }
 
+    public int cantidadLecturas() {
+        return medidor.cantidadLecturas() + 1;
+    }
 }

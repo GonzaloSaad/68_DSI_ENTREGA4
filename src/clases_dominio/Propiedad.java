@@ -78,4 +78,12 @@ public class Propiedad {
         return str.toString();
     }
 
+    public int cantidadLecturas() {
+        int sum = 0;
+        for (Instalacion ins : instalaciones) {
+            sum += ins.cantidadLecturas();
+        }
+        return sum;
+    }
+
 }

@@ -10,6 +10,7 @@ import clases_analisis.GestorControlLectura;
 import randomCreator.RandomCreator;
 
 //import clases_dominio.Propiedad;
+
 /**
  *
  * @author Gonzalo
@@ -39,7 +40,14 @@ public class CU68_DSI_ENTREGA4 {
          *
          * for (Propiedad prop: gestor.getPropiedades()){
          * System.out.println(prop); }
+         *
+         * Codigo para mostrar la cantidad de lecturas creadas.
+         *
+         * int sum=0; for (Propiedad prop: gestor.getPropiedades() ){ sum +=
+         * prop.cantidadLecturas(); } System.out.println(sum);
+         *
          */
+        
     }
 
     public static GestorControlLectura generarGestorConInfo(int props, int periodos) {
