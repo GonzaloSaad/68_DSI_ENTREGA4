@@ -11,6 +11,7 @@ import clases_dominio.PeriodoFacturacion;
 import clases_dominio.Propiedad;
 import clases_dominio.Usuario;
 import servidorMailG.InterfazServidorMail;
+//import java.util.Scanner; //----------- Para enter.
 
 /**
  *
@@ -106,7 +107,11 @@ public class GestorControlLectura {
         int cod;
         for (Propiedad prop : this.propiedades) {
             cod = prop.controlarLectura(periodoActual.getFechaDesde(), periodoActual.getFechaHasta());
+            
+            //Scanner sc = new Scanner(System.in); //----------- Para enter.
             if (cod >= 0) {
+                //System.out.println("\nEnter para continuar."); //----------- Para enter.
+                //sc.nextLine(); //----------- Para enter.
                 lecturasPorEstado[cod]++;
             }
         }

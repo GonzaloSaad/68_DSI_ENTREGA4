@@ -9,6 +9,7 @@ import clases_analisis.GestorControlLectura;
 
 import randomCreator.RandomCreator;
 
+//import clases_dominio.Propiedad;
 /**
  *
  * @author Gonzalo
@@ -33,6 +34,12 @@ public class CU68_DSI_ENTREGA4 {
          */
         gestor.ejecutarControlLectura();
 
+        /**
+         * Codigo para mostrar el random de propiedaes.
+         *
+         * for (Propiedad prop: gestor.getPropiedades()){
+         * System.out.println(prop); }
+         */
     }
 
     public static GestorControlLectura generarGestorConInfo(int props, int periodos) {
